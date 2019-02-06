@@ -1,11 +1,39 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
 
+
+
+
     <div class="container">
-        <div class="jumbotron text-center mt-4">
-            <h1>Page d'inscription</h1>
+        <div class="jumbotron mt-4 mr-5 ml-5">
+            <div class="col-lg-12 text-center">
+                <h1>Inscription</h1>
+            </div>
+
+
+            {{ form_start(form) }}
+
+            <div class="row justify-content-center">
+                <div class="col-lg-4 ">
+                    {{ form_row(form.fname, {'label':'Prénom', 'attr': {'placeholder':'Ex : Bernard'}}) }}
+                    {{ form_row(form.lname, {'label': 'Nom', 'attr':{'placeholder': 'Ex : Durand'}}) }}
+                    {{ form_row(form.email, {'label': 'Email', 'attr':{'placeholder': 'Ex : brd.drd@mail.com'}}) }}
+                    {{ form_row(form.username, {'label': 'Nom d\'utilisateur', 'attr':{'placeholder': 'Ex : DurandNoDesentsu'}}) }}
+                    {{ form_row(form.password, {'label': 'Mot de passe'}) }}
+
+                    <div class="form-row text-center">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary text-center">Inscription</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{ form_end(form) }}
         </div>
     </div>
 

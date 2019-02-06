@@ -34,11 +34,6 @@ class MainController extends AbstractController{
         return $this->render('main/download.html.twig');
     }
 
-    /**
-     * @Route("/register", name="main.register")
-     */
-    public function goToRegister(){
-        return $this->render('main/register.html.twig');
-    }
+
 
 }
