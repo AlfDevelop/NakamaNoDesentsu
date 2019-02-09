@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="jumbotron mt-4">
+            <div class="col-lg-12 text-center">
+                <h2>Connexion</h2>
+            </div>
+            <form method="post" action="{{ path("security.login") }}">
+                <input type="text" name="_username" id="username" class="form-control" placeholder="Nom d'utilisateur...">
+                <input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe...">
+
+                <button type="submit" class="btn btn-primary">Connexion</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -4,10 +4,15 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- *
+ * @UniqueEntity(
+ *      fields = {"email"},
+ *     message = "L'email choisi est déjà pris"
+ *)
  */
 class User implements UserInterface
 {
@@ -30,6 +35,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(message="Veuillez entrer une adresse mail valide")
      */
     private $email;
 
@@ -40,6 +46,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=8, max=20, minMessage="Votre mot de passe doit comporter au minimum 8 caractères et au maximum 20 caractères")
      */
     private $password;
 
@@ -150,6 +157,7 @@ class User implements UserInterface
     public function getRoles()
     {
         // TODO: Implement getRoles() method.
+        return ['ROLE_USER'];
     }
 
     public function eraseCredentials()
